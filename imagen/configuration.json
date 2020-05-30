@@ -1,0 +1,28 @@
+{
+  "builders": [
+    {
+      "type": "googlecompute",
+      "account_file": "account.json",
+      "project_id": "prueba-278019",
+      "ssh_username":"ubuntu",
+      "source_image_family": "ubuntu-1604-lts",
+      "image_name": "nginx",
+      "zone": "us-central1-a",
+      "machine_type":"n1-standard-1",
+      "disk_size": "20",
+      "on_host_maintenance":"TERMINATE",
+      "image_family":"nginx"
+    }
+  ],
+  "provisioners": [
+      {
+           "type": "shell",
+           "inline": [
+                "sudo apt-get clean",
+                "sudo apt-get update",
+                "sudo apt-get -y upgrade",
+                "sudo apt-get -y install nginx"
+           ]
+      }
+  ]
+}
